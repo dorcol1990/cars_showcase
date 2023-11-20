@@ -1,6 +1,12 @@
-import { Hero } from "@/components";
+import { CustomFilter, Hero, SearchBar } from "@/components";
 
-export default function Home() {
+import { fetchCars } from "@/utils";
+
+export default async function Home() {
+
+const allCars = await fetchCars();
+const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+
   return (
     <main className="overflow-hidden">
       <Hero/>
@@ -12,8 +18,21 @@ export default function Home() {
           <p>Explore the cars you might like</p>
         </div>
         <div className="home__filters">
-          
+          <SearchBar />
+          <div className="home__filter-container">
+            <CustomFilter title="fuel"/>
+            <CustomFilter title="year"/>
+          </div>
         </div>
+        {!isDataEmpty ? (
+          <section>
+            WE HAVE CARS
+          </section>
+        ) : (
+          <div>
+            <h2>Oops, no result</h2>
+          </div>
+        )}
       </div>
     </main>
   )

@@ -5,7 +5,7 @@ import {useState} from 'react';
 
 const SearchBar = () => {
 
-const [manufacturer, setManufacturer] = useState('');
+const [manufacturer, setManuFacturer] = useState('');
 const handleSearch = ()=>{}
 
   return (
@@ -13,7 +13,7 @@ const handleSearch = ()=>{}
       <div className="searchbar__item">
         <SearchManufacturer 
           manufacturer={manufacturer}
-          setManuFacturer={setManufacturer}
+          setManuFacturer={setManuFacturer}
         />
       </div>
     </form>
