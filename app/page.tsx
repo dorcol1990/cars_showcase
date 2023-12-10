@@ -1,4 +1,6 @@
-import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
+'use client'
+
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
 
 import { fetchCars } from "@/utils";
@@ -19,7 +21,7 @@ const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
     <main className="overflow-hidden">
       <Hero/>
       <div className="mt-12 padding-x padding-y max-width" id="discover">
-        <div className="home__text-caontainer">
+        <div className="home__text-container">
           <h1 className="text-4xl font-extrabold">
             Car Catalogue
           </h1>
@@ -39,6 +41,10 @@ const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
               <CarCard  car={car}/>
               ))}
             </div>
+            <ShowMore 
+             pageNumber={(searchParams.limit || 10) /10}
+             isNext={(searchParams.limit || 10) > allCars.length}
+            />
           </section>
         ) : (
           <div className="home__error-container">
@@ -46,6 +52,7 @@ const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
             <p>{allCars?.message}</p>
           </div>
         )}
+
       </div>
     </main>
   )

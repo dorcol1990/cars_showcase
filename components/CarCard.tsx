@@ -47,7 +47,7 @@ const CarCard = ({car}: CarCardProps) => {
             <p className='text-[14px]'>{drive.toUpperCase()}</p>
           </div>
           <div className='flex flex-col justify-center items-center gap-2'>
-            <Image src="/mpg.svg" width={20} height={20} alt='mpg'/>
+            <Image src="/gas.svg" width={20} height={20} alt='mpg'/>
             <p className='text-[14px]'>{city_mpg} MPG</p>
           </div>
         </div>
